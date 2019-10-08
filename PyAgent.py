@@ -1,8 +1,6 @@
 # PyAgent.py
 import random
 from enum import Enum
-# import time
-import sys
 
 import Action
 import Orientation
@@ -41,7 +39,6 @@ def PyAgent_Destructor ():
 
 def PyAgent_Initialize ():
     print("PyAgent_Initialize")
-    raw_input("Press a key to continue")
     global x,y,gold,arrow,orientation, endingOrientation, pathHomeIndex, playingAgain
 
     print("GoldGG", gold, bufferedRoute)
@@ -210,11 +207,11 @@ def planRouteHome():
         wumpusLocation = (x+2, y+2)
 
     #Go down if the wumpus is in the first column and we will run into the wumpus, or if the wumpus is not in our column
-    goDown = (wumpusLocation[0] == 1 and wumpusLocation[1] <= y) or wumpusLocation[1] > y
+    goDown = (wumpusLocation[0] == 1 and wumpusLocation[1] <= y) or wumpusLocation[1] > y or wumpusLocation[0] != x
 
 
     #Go left if the wumpus is in the first row and we will run into the wumpus, or if the wumpus is not in our row
-    goLeft = (wumpusLocation[1] == 1 and wumpusLocation[0] <= x) or wumpusLocation[0] > x
+    goLeft = (wumpusLocation[1] == 1 and wumpusLocation[0] <= x) or wumpusLocation[0] > x or wumpusLocation[1] != y
 
     global bufferedRoute
 
@@ -354,7 +351,6 @@ def goForward():
 
 def PyAgent_Process (stench,breeze,glitter,bump,scream):
     # time.sleep(1)
-    # raw_input("Press a key to continue")
 
     global x, y, orientation, width, height, gold, knowledgeBase, pathHomeIndex, bufferedRoute, arrow, visited, goldLoc
 
@@ -526,6 +522,9 @@ def PickNextMove(knowledgeBase, nextLocation, x, y):
 
         print(safeNeighbors)
 
+        if len(safeNeighbors) == 0:
+            return goForward()
+
         face = random.randrange(len(safeNeighbors))
 
         nextTarget = safeNeighbors[face]
@@ -554,7 +553,7 @@ def UpdateKnowledgeBase(stench, x, y):
                 wumpusFound = True
                 wumpusLocation = neighbor
                 knowledgeBase[wumpusLocation] = knowledge.Wumpus
-                print("FOUnd wumpus at ", wumpusLocation)
+                print("FOund wumpus at ", wumpusLocation)
                 visited[(x,y)] = True
                 return
 
