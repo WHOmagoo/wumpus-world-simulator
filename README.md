@@ -1,3 +1,6 @@
+#Implements a reflexive agent that does not do anything in a smart way.
+
+Forked from my teacher, below is the original README
 # Wumpus World Simulator
 
 Simulator for the AI Wumpus World game in C++ with Python wrapper.
