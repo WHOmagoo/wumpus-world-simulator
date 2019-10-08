@@ -15,8 +15,8 @@ PYTHON-LIB = $(shell $(PYTHON_CONFIG) --ldflags)
 # PYTHON-LIB = -L/System/Library/Frameworks/Python.framework/Versions/2.7/lib -lpython2.7
 
 # Settings for CentOS Linux
-#PYTHON-INC = -I/usr/include/python2.7
-#PYTHON-LIB = -L/usr/lib64 -lpython2.7
+PYTHON-INC = -I/usr/include/python2.7
+PYTHON-LIB = -L/usr/lib64 -lpython2.7
 
 all: wumpsim
 
