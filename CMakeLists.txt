@@ -1,7 +1,7 @@
 project(wumpus-world)
 cmake_minimum_required(VERSION 3.3)
 
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 98)
 
 #file(GLOB wumpus-world-headers "*.h")
 aux_source_directory(. SRC_LIST)

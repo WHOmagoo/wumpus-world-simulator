@@ -33,11 +33,7 @@ Location& Location::operator= (const Location& location)
 
 bool Location::operator== (const Location& location) const
 {
-	if ((X == location.X) && (Y == location.Y))
-	{
-		return true;
-	}
-	return false;
+	return (X == location.X) && (Y == location.Y);
 }
 
 bool Adjacent (const Location& location1, const Location& location2)
@@ -47,12 +43,8 @@ bool Adjacent (const Location& location1, const Location& location2)
 	int Y1 = location1.Y;
 	int Y2 = location2.Y;
 
-	if (((X1 == X2) && (Y1 == (Y2 - 1))) ||
-		((X1 == X2) && (Y1 == (Y2 + 1))) ||
-		((X1 == (X2 - 1)) && (Y1 == Y2)) ||
-		((X1 == (X2 + 1)) && (Y1 == Y2)))
-	{
-		return true;
-	}
-	return false;
+	return ((X1 == X2) && (Y1 == (Y2 - 1))) ||
+		   ((X1 == X2) && (Y1 == (Y2 + 1))) ||
+		   ((X1 == (X2 - 1)) && (Y1 == Y2)) ||
+		   ((X1 == (X2 + 1)) && (Y1 == Y2));
 }
